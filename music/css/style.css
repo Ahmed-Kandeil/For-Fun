@@ -1,0 +1,49 @@
+/* ========================================================================================== */
+/* ============================== The Varables ============================== */
+/* ========================================================================================== */
+:root {
+  --main-duration: 1s;
+}
+/* ========================================================================================== */
+/* ============================== The Globel Rule ============================== */
+/* ========================================================================================== */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/* ========================================================================================== */
+/* ============================== The Body ============================== */
+/* ========================================================================================== */
+body {
+  background: hsl(0, 0%, 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+section {
+  overflow: hidden;
+  height: 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+section span {
+  background: hsl(calc(var(--index) * 10), 80%, 60%);
+  border-radius: 10px;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  animation: music var(--main-duration) ease-in-out alternate infinite;
+  animation-delay: calc(var(--index) * 100ms);
+}
+section span:not(last-child) {
+  margin-left: 2px;
+}
+@keyframes music {
+  to {
+    height: 100%;
+  }
+}

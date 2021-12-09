@@ -1,0 +1,52 @@
+/* ========================================================================================== */
+/* ============================== The Varables ============================== */
+/* ========================================================================================== */
+:root {
+  --main-duration: 0.85s;
+}
+/* ========================================================================================== */
+/* ============================== The Globel Rule ============================== */
+/* ========================================================================================== */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/* ========================================================================================== */
+/* ============================== The Body ============================== */
+/* ========================================================================================== */
+body {
+  background: hsl(0, 0%, 0%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 250px;
+  height: 250px;
+  position: relative;
+}
+.loading span {
+  border: 10px solid hsl(0, 0%, 5%);
+  border-top: 10px solid hsl(calc(var(--index) * 25), 80%, 60%);
+  border-left: 10px solid hsl(calc(var(--index) * 25), 80%, 60%);
+  border-radius: 50%;
+  position: absolute;
+  top: calc(var(--index) * 12px);
+  left: calc(var(--index) * 12px);
+  right: calc(var(--index) * 12px);
+  bottom: calc(var(--index) * 12px);
+  animation: span var(--main-duration) calc(var(--index) * -0.1s) alternate
+    ease-in-out infinite;
+}
+@keyframes span {
+  0% {
+    transform: rotate(195deg);
+  }
+  100% {
+    transform: rotate(250deg);
+  }
+}
