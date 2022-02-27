@@ -1,0 +1,189 @@
+/*
+---------------------------------------------
+Table Of Contact :
+- Varables => 20
+  -- Colors Varables => 27
+  -- Animation Varables => 38
+- Globel Rule => 47
+- Container => 65
+  -- Container Before => 74
+  -- Bobbing Animation => 90
+  -- Container After => 104
+- Loader => 120
+  -- Rotation Animation => 132
+  -- Loader After => 146
+- Ball => 161
+  -- Swing Animation => 178
+--------------------------------------------- 
+*/
+
+/*
+---------------------------------------------
+Varables
+--------------------------------------------- 
+*/
+
+/*
+---------------------------------------------
+Colors Varables
+--------------------------------------------- 
+*/
+:root {
+  --red: hsl(355, 100%, 65%);
+  --blue: hsl(195, 100%, 50%);
+  --white: hsl(0, 0%, 100%);
+}
+/* 
+---------------------------------------------
+Animation Varables
+--------------------------------------------- 
+*/
+:root {
+  --main-duration: 5s;
+  --main-timing-function: ease-in-out;
+}
+/* 
+---------------------------------------------
+Globel Rule
+--------------------------------------------- 
+*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: hsl(230, 25%, 15%);
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* 
+---------------------------------------------
+Container
+--------------------------------------------- 
+*/
+.container {
+  position: relative;
+  transform: translateY(-100px);
+}
+/* 
+---------------------------------------------
+Container Before
+--------------------------------------------- 
+*/
+.container::before {
+  content: "";
+  background: var(--white);
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 200px;
+  animation: bobbing var(--main-duration) infinite;
+  animation-timing-function: var(--main-timing-function);
+}
+/* 
+---------------------------------------------
+Bobbing Animation
+--------------------------------------------- 
+*/
+@keyframes bobbing {
+  0%,
+  100% {
+    transform: translateX(15px);
+  }
+  50% {
+    transform: translateX(-15px);
+  }
+}
+/* 
+---------------------------------------------
+Container After
+--------------------------------------------- 
+*/
+.container::after {
+  content: "";
+  background: var(--red);
+  border-radius: 50%;
+  width: 800px;
+  height: 800px;
+  position: absolute;
+  top: 400px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+/* 
+---------------------------------------------
+Loader
+--------------------------------------------- 
+*/
+.container .loader {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  animation: rotation var(--main-duration) infinite;
+  animation-timing-function: var(--main-timing-function);
+}
+/* 
+---------------------------------------------
+Rotation Animation
+--------------------------------------------- 
+*/
+@keyframes rotation {
+  0%,
+  100% {
+    transform: rotate(50deg);
+  }
+  50% {
+    transform: rotate(-50deg);
+  }
+}
+/* 
+---------------------------------------------
+Loader After
+--------------------------------------------- 
+*/
+.container .loader::after {
+  content: "";
+  background: var(--blue);
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+}
+/* 
+---------------------------------------------
+Ball
+--------------------------------------------- 
+*/
+.container .loader .ball {
+  background: hsl(0, 0%, 100%);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  left: -15px;
+  transform: translateY(-100%);
+  animation: swing var(--main-duration) infinite;
+  animation-timing-function: var(--main-timing-function);
+}
+/* 
+---------------------------------------------
+Swing Animation
+--------------------------------------------- 
+*/
+@keyframes swing {
+  0%,
+  100% {
+    transform: translateX(-30px) translateY(-100%);
+  }
+  50% {
+    transform: translateX(220px) translateY(-100%);
+  }
+}
